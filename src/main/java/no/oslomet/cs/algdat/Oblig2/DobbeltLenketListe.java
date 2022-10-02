@@ -51,11 +51,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public int antall() {
         throw new UnsupportedOperationException();
+        /*for (int i = 0; i < liste.length; i++) {
+            antall++;
+        }
+        return antall;*/
     }
 
     @Override
     public boolean tom() {
         throw new UnsupportedOperationException();
+        /*if (liste < 1) {
+            return false;
+        }
+        return true;*/
     }
 
     @Override
