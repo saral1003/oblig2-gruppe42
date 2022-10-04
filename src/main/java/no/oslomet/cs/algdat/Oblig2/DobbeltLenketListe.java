@@ -53,10 +53,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hode.neste = null;
         } else {
             Node head = new Node(0);
-            head.neste = new Node(1);
+            hale.neste = new Node(1);
             //head.neste.neste = new Node(1);
         }
     }
+
+    /*private Node<T> finnNode(int index) {
+        if (index < (antall / 2)) {
+            Node<T> p = hode;
+            for (int i = 0; i < index; i++) {
+                p = p.neste;
+            }
+        }
+        return p;
+    }*/
 
     public Liste<T> subliste(int fra, int til) {
         throw new UnsupportedOperationException();
@@ -98,6 +108,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T hent(int indeks) {
         throw new UnsupportedOperationException();
+        //indeksKontroll(indeks, false);
+        //return finnNode(indeks).verdi;
     }
 
     @Override
