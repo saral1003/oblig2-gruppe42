@@ -96,8 +96,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+    public void leggInn(int indeks, T verdi) { // Koden er inspirert av Kompendiet, promgramkode 3.3.2 f
+        //throw new UnsupportedOperationException();
+        if (indeks == 0) { // Verdi legges først hvis indeks er null
+            hode = new Node<>(verdi, null, hode.neste);
+            if (antall == 0) { // Hvis listen er tom
+                hale = hode;
+            }
+        } else if (indeks == antall) { // Hvis indeksen er bakerst
+            hale = hale.neste = new Node<>(verdi, hale.forrige, null);
+        }
     }
 
     @Override
