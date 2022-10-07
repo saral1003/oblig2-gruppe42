@@ -37,11 +37,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
 
-    public DobbeltLenketListe() {
+    public DobbeltLenketListe() {   // ???
         //throw new UnsupportedOperationException();
     }
 
-    public DobbeltLenketListe(T[] a) {
+    public DobbeltLenketListe(T[] a) {  // Oppgave 1
         //throw new UnsupportedOperationException();
         Objects.requireNonNull(a, "Tabellen a er null!");
 
@@ -58,7 +58,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
-    private Node<T> finnNode(int index) {
+    private Node<T> finnNode(int index) {   // Oppgave 3a
         Node<T> p = hode;
         if (index < (antall / 2)) {
             for (int i = 0; i < index; i++) {
@@ -68,12 +68,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return p;
     }
 
-    public Liste<T> subliste(int fra, int til) {
+    public Liste<T> subliste(int fra, int til) {    // Oppgave 3b
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public int antall() {
+    public int antall() {   // Oppgave 1
         //throw new UnsupportedOperationException();
         /*for (int i = 0; i < liste.length; i++) {
             antall++;
@@ -82,7 +82,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean tom() {
+    public boolean tom() {  // Oppgave 1
         //throw new UnsupportedOperationException();
         /*if (liste.length < 1) {
             return false;
@@ -91,12 +91,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean leggInn(T verdi) {
+    public boolean leggInn(T verdi) {   // Oppgave 2b
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void leggInn(int indeks, T verdi) { // Koden er inspirert av Kompendiet, promgramkode 3.3.2 f
+    public void leggInn(int indeks, T verdi) { // Oppgave 5 - Koden er inspirert av Kompendiet, promgramkode 3.3.2 f
         //throw new UnsupportedOperationException();
         if (indeks == 0) { // Verdi legges først hvis indeks er null
             hode = new Node<>(verdi, null, hode.neste);
@@ -109,39 +109,39 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean inneholder(T verdi) {
+    public boolean inneholder(T verdi) { // Oppgave 4
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public T hent(int indeks) {
+    public T hent(int indeks) { // Oppgave 3a
         //throw new UnsupportedOperationException();
         indeksKontroll(indeks, false);
         return finnNode(indeks).verdi;
     }
 
     @Override
-    public int indeksTil(T verdi) {
+    public int indeksTil(T verdi) { // Oppgave 4
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public T oppdater(int indeks, T nyverdi) {
+    public T oppdater(int indeks, T nyverdi) {  // Oppgave 3a
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean fjern(T verdi) {
+    public boolean fjern(T verdi) { // Oppgave 6
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public T fjern(int indeks) {
+    public T fjern(int indeks) {    // Oppgave 6
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void nullstill() {
+    public void nullstill() {   // Oppgave 7
         throw new UnsupportedOperationException();
     }
 
@@ -177,11 +177,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<T> iterator() { // Oppgave 8b
         throw new UnsupportedOperationException();
     }
 
-    public Iterator<T> iterator(int indeks) {
+    public Iterator<T> iterator(int indeks) {   // Oppgave 8d
         throw new UnsupportedOperationException();
     }
 
@@ -196,7 +196,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;  // teller endringer
         }
 
-        private DobbeltLenketListeIterator(int indeks) {
+        private DobbeltLenketListeIterator(int indeks) {    // Oppgave 8c
             throw new UnsupportedOperationException();
         }
 
@@ -206,20 +206,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         @Override
-        public T next() {
+        public T next() {   // Oppgave 8a
             throw new UnsupportedOperationException();
         }
-
+        /*
         @Override
-        public void remove() {
+        public void remove() {  // Oppgave 9 - Kommenter ut!!!
             throw new UnsupportedOperationException();
         }
 
-    } // class DobbeltLenketListeIterator
+    } // class DobbeltLenketListeIterator   - Oppgave 10 - Kommenter ut!!!
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
-    }
+    } */
 
 } // class DobbeltLenketListe
 
