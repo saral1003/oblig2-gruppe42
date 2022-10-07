@@ -151,19 +151,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (antall == 0) return "[]";  // hvis listen er tom, returner "[]"
 
         StringBuilder tegnstreng = new StringBuilder();         // Oppretter en StringBuilder "tegnstreng"
-        Node<T> p = hode;                                       // Node "neste-peker" starter på hode(listen sin første verdi)
+        Node<T> p = hode;                                       // Node "p" starter på hode(listen sin første verdi)
         tegnstreng.append('[');                                 // "tegnstreng" starter med en "["
 
-        while (p != hale) {                                     // Så lenge "neste-peker" ikke er hale(listen sin siste verdi)...
+        while (p != hale) {                                     // Så lenge "p" ikke er hale(listen sin siste verdi)...
             tegnstreng.append(p.verdi + ", ");                  // ... tar "tegnstreng" med en verdi og legger til et komma...
             p = p.neste;                                        // ... og hopper videre til neste verdi i listen
         }
-        tegnstreng.append(p.verdi + "]");                       // Peker "neste-peker" på hale, legges verdien til i "tegnstreng" som avsluttes med en "]"
+        tegnstreng.append(p.verdi + "]");                       // Peker "p" på hale, legges verdien til i "tegnstreng" som avsluttes med en "]"
         return tegnstreng.toString();                           // "tegnstreng" konverteres til en String og returneres
     }
 
-    public String omvendtString() {
-        throw new UnsupportedOperationException();
+    public String omvendtString() { //Oppgave 2a - del 2
+        //throw new UnsupportedOperationException();
+        StringBuilder omvendtTegnstreng = new StringBuilder();         // Oppretter en StringBuilder "omvendtTegnstreng"
+        Node<T> p = hale;                                              // Node "p" starter på hale(listen sin siste verdi)
+        omvendtTegnstreng.append('[');                                 // "omvendtTegnstreng" starter med en "["
+
+        while (p != hode) {                                            // Så lenge "p" ikke er hode(listen sin første verdi)...
+            omvendtTegnstreng.append(p.verdi + ", ");                  // ... tar "omvendtTegnstreng" med en verdi og legger til et komma...
+            p = p.forrige;                                             // ... og hopper videre til forrige verdi i listen
+        }
+        omvendtTegnstreng.append(p.verdi + "]");                       // Peker "p" på hode, legges verdien til i "tegnstreng" som avsluttes med en "]"
+        return omvendtTegnstreng.toString();                           // "omvendtTegnstreng" konverteres til en String og returneres
     }
 
     @Override
