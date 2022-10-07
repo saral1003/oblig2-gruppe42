@@ -3,7 +3,7 @@
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
 * Aksel Holm Jensen, S314807, s314807@oslomet.no
-* Sara Lund
+* Sara Lund, s364716, s364716@oslomet.no
 
 # Arbeidsfordeling
 
