@@ -147,7 +147,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        if (antall == 0){   // hvis listen er tom...
+            return "[]";    // returner "[]"
+        }
     }
 
     public String omvendtString() {
