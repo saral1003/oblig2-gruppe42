@@ -151,14 +151,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (antall == 0) return "[]";  // hvis listen er tom, returner "[]"
 
         StringBuilder tegnstreng = new StringBuilder();         // Oppretter en StringBuilder "tegnstreng"
-        Node<T> neste-peker = hode;                             // Node "neste-peker" starter på hode(listen sin første verdi)
+        Node<T> p = hode;                                       // Node "neste-peker" starter på hode(listen sin første verdi)
         tegnstreng.append('[');                                 // "tegnstreng" starter med en "["
 
-        while (neste-peker != hale) {                           // Så lenge "neste-peker" ikke er hale(listen sin siste verdi)...
-            tegnstreng.append(neste-peker.verdi + ", ");        // ... tar "tegnstreng" med en verdi og legger til et komma...
-            neste-peker = neste-peker.neste;                    // ... og hopper videre til neste verdi i listen
+        while (p != hale) {                                     // Så lenge "neste-peker" ikke er hale(listen sin siste verdi)...
+            tegnstreng.append(p.verdi + ", ");                  // ... tar "tegnstreng" med en verdi og legger til et komma...
+            p = p.neste;                                        // ... og hopper videre til neste verdi i listen
         }
-        tegnstreng.append(neste-peker.verdi + "]");             // Peker "neste-peker" på hale, legges verdien til i "tegnstreng" som avsluttes med en "]"
+        tegnstreng.append(p.verdi + "]");                       // Peker "neste-peker" på hale, legges verdien til i "tegnstreng" som avsluttes med en "]"
         return tegnstreng.toString();                           // "tegnstreng" konverteres til en String og returneres
     }
 
