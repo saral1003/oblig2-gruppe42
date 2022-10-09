@@ -98,14 +98,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) { // Oppgave 5 - Koden er inspirert av Kompendiet, promgramkode 3.3.2 f
         //throw new UnsupportedOperationException();
+        indeksKontroll(indeks, true);
+        Objects.requireNonNull(verdi, "Ikke gyldig tall.");
         if (indeks == 0) { // Verdi legges først hvis indeks er null
-            hode = new Node<>(verdi, null, hode.neste);
+            hode = new Node<>(verdi, null, null);
             if (antall == 0) { // Hvis listen er tom
                 hale = hode;
             }
         } else if (indeks == antall) { // Hvis indeksen er bakerst
             hale = hale.neste = new Node<>(verdi, hale.forrige, null);
+        } else {
+            Node<T> p = hode;
+            for (int i = 1; i < indeks; i++) {
+                p = p.neste;
+            }
+            p.neste = new Node<>(verdi, p.forrige, p.neste);
         }
+        antall++;
     }
 
     @Override
@@ -221,6 +230,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     } */
 
-} // class DobbeltLenketListe
+} }// class DobbeltLenketListe
 
 
