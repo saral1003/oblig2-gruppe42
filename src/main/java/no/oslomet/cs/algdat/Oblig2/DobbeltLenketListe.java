@@ -78,9 +78,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     private Node<T> finnNode(int index) {   // Oppgave 3a
         Node<T> p = hode;
-        if (index < (antall / 2)) {
+        if (index < (antall/2)) {
             for (int i = 0; i < index; i++) {
                 p = p.neste;
+            }
+        } else {
+            for (int i = (antall/2); i > index; i--) {
+                p = p.forrige;
             }
         }
         return p;
@@ -239,14 +243,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {  // Oppgave 9 - Kommenter ut!!!
             throw new UnsupportedOperationException();
-        }
+        }/*/
 
     } // class DobbeltLenketListeIterator   - Oppgave 10 - Kommenter ut!!!
 
-    public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+    /*public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
     } */
 
-} }// class DobbeltLenketListe
+} // class DobbeltLenketListe
 
 
