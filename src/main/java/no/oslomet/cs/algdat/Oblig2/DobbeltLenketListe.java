@@ -39,22 +39,40 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe() {   // ???
         //throw new UnsupportedOperationException();
+        hode = hale = null;
+        antall = 0;
     }
 
     public DobbeltLenketListe(T[] a) {  // Oppgave 1
         //throw new UnsupportedOperationException();
         Objects.requireNonNull(a, "Tabellen a er null!");
+        for (int i = 0; i < a.length; i++){
+            if((boolean) Objects.requireNonNull(a[i])) {
 
-        if (antall == 0) {
+            }
+        }
+        if (a.length == 0) {
             hode = hale = null;
-        } else if (antall == 1) {
+        } else if (a.length == 1) {
+            hode = new Node<>(a[0], null, null);
             hale = hode;
             hode.forrige = null;
             hode.neste = null;
+            antall++;
         } else {
-            Node head = new Node(0);
+            /*Node head = new Node(a[1]);
             hale.neste = new Node(1);
-            //head.neste.neste = new Node(1);
+            head.neste.neste = new Node(1);*/
+
+            hode = new Node<>(a[0], null, null);
+            Node<T> p = hode;
+
+            for (int i = 1; i < a.length; i++){
+                if (a[i] != null) {
+                    new Node<>(a[i], p.forrige, p.neste);
+                    antall++;
+                }
+            }
         }
     }
 
@@ -107,7 +125,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
         } else if (indeks == antall) { // Hvis indeksen er bakerst
             hale = hale.neste = new Node<>(verdi, hale.forrige, null);
-        } else {
+        } else { // Hvis indeksen ikke er først eller sist i listen
             Node<T> p = hode;
             for (int i = 1; i < indeks; i++) {
                 p = p.neste;
@@ -115,6 +133,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             p.neste = new Node<>(verdi, p.forrige, p.neste);
         }
         antall++;
+        endringer++;
     }
 
     @Override
