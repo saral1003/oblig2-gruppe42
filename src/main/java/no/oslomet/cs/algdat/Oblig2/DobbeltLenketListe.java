@@ -39,18 +39,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe() {   // ???
         //throw new UnsupportedOperationException();
-        hode = hale = null;
-        antall = 0;
     }
 
     public DobbeltLenketListe(T[] a) {  // Oppgave 1
         //throw new UnsupportedOperationException();
         Objects.requireNonNull(a, "Tabellen a er null!");
-        for (int i = 0; i < a.length; i++){
-            if((boolean) Objects.requireNonNull(a[i])) {
 
-            }
-        }
         if (a.length == 0) {
             hode = hale = null;
         } else if (a.length == 1) {
@@ -59,20 +53,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hode.forrige = null;
             hode.neste = null;
             antall++;
+            endringer++;
         } else {
-            /*Node head = new Node(a[1]);
-            hale.neste = new Node(1);
-            head.neste.neste = new Node(1);*/
-
-            hode = new Node<>(a[0], null, null);
+            for (int i = 0; i < a.length; i++){
+                if (a[i] != null) {
+                    hode = new Node<>(a[i], null, hode.neste);
+                    endringer++;
+                    antall++;
+                    return;
+                }
+            }
             Node<T> p = hode;
-
             for (int i = 1; i < a.length; i++){
                 if (a[i] != null) {
                     new Node<>(a[i], p.forrige, p.neste);
                     antall++;
+                    endringer++;
                 }
             }
+            hode.forrige = null;
+            hale.neste = null;
         }
     }
 
@@ -93,19 +93,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public int antall() {   // Oppgave 1
         //throw new UnsupportedOperationException();
-        /*for (int i = 0; i < liste.length; i++) {
-            antall++;
-        }*/
         return antall;
     }
 
     @Override
     public boolean tom() {  // Oppgave 1
         //throw new UnsupportedOperationException();
-        /*if (liste.length < 1) {
+        if (antall == 0) {
+            return true;
+        } else {
             return false;
-        }*/
-        return true;
+        }
     }
 
     @Override
