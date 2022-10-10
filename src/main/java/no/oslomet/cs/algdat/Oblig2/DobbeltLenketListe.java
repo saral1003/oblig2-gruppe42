@@ -152,8 +152,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean inneholder(T verdi) { // Oppgave 4
-        throw new UnsupportedOperationException();
+    public boolean inneholder(T verdi) { // Oppgave 4 - del 2
+        //throw new UnsupportedOperationException();
+        if (indeksTil(verdi) != -1) {   // hvis metoden indeksTil IKKE er -1, inneholder listen verdien...
+            return true;                // ... og true returneres
+        }
+        else {                          // hvis ikke, betyr det at verdien finnes i listen...
+            return false;               // ... og false returneres
     }
 
     @Override
@@ -164,7 +169,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public int indeksTil(T verdi) { // Oppgave 4
+    public int indeksTil(T verdi) { // Oppgave 4 - del 1
         //throw new UnsupportedOperationException();
         Node<T> posisjon = hode;                        // Node "posisjon" er starten av listen(hode)
         int indeks = 0;                                 // en teller kalt "indeks" er satt til null
