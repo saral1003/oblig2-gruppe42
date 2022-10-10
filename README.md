@@ -23,7 +23,15 @@ så lenge det ikke pekes på listen sin "hale". Gjøres det, legges den verdien 
 StringBuilderen vår kan nå returneres som en String. 
 I **"omvendtString()"** benyttes samme konsept, men i motsatt rekkefølge(det startes på "hale" og går baklengs til "hode"). 
  
-I **oppgave 2b** ble det først opprettet en ny Node. Objects.requreNonNull benyttes for å forsikre oss om at den nye Noden ikke er null. Først sjekkes det
+I **oppgave 2b** ble det først opprettet en ny Node som inneholder "verdi". Objects.requreNonNull benyttes for å forsikre oss om at den nye Noden ikke er null. Først sjekkes det
 om hode og hale er null og antall er 0; i så tilfelle peker hode og hale på den nye noden, og både antall og endringer øker med en. Om ikke listen er tom
 legges halepekeren inn bakerst i listen og det forsikres at rekkefølgen er listen + node "ny" + node "p"(med verdien)(som er hale). 
 Igjen; både antall og endringer øker med en. "true" kan dernest returneres. 
+
+I **oppgave 3**...
+
+**Oppgave 4** består av en hoveddel og en relativt liten del. I hoveddelen(indeksTil(T verdi)) opprettes en Node "posisjon" som settes på hode, og en teller som gir svar på indeksen som skal returneres hvis verdien finnes i listen. 
+En for-løkke brukes for å løpe gjennom listen og .equals()-metode brukes for å sammenligne innholdet(her: om verdien vi leter matcher med verdien på en gitt posisjon). 
+Finnes verdien, skal indeks-verdien returneres(om verdien vi søker finnes på hodet dvs. indeks 0 skal 0 returneres). Hvis ikke, flytter posisjonen til neste posisjon i listen og indeksen øker med 1.
+Finnes ikke verdien, returneres -1. I den mindre delen (inneholder(T verdi)) brukes en if-test for å finne ut om hoveddelen returnerer "-1" eller et annet tall. Hvis det er et annet tall, inneholder listen verdien og true returneres. 
+Hvis det er "-1" fantes ikke verdien og returnerer false. 
