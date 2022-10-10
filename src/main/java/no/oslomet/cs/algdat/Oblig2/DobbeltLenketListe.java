@@ -39,6 +39,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe() {   // ???
         //throw new UnsupportedOperationException();
+        hode = null;
+        antall = 0;
+        endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {  // Oppgave 1
