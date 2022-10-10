@@ -8,7 +8,7 @@ Oppgaven er levert av følgende studenter:
 # Arbeidsfordeling
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
-* Aksel har hatt hovedansvar for oppgave 2, 
+* Aksel har hatt hovedansvar for oppgave 2, 4, 6 og 8???
 * Sara har hatt hovedansvar for oppgave 1, 3, 5,  
 * Vi har i fellesskap løst oppgave .... 
 
