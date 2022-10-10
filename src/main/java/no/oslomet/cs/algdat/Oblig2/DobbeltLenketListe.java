@@ -83,7 +83,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 p = p.neste;
             }
         } else {
-            for (int i = (antall/2); i > index; i--) {
+            p = hale;
+            for (int i = antall; i > index; i--) {
                 p = p.forrige;
             }
         }
@@ -112,7 +113,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {   // Oppgave 2b
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return true;
     }
 
     @Override
@@ -126,13 +128,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale = hode;
             }
         } else if (indeks == antall) { // Hvis indeksen er bakerst
-            hale = hale.neste = new Node<>(verdi, hale.forrige, null);
+            hale = hale.neste = new Node<>(verdi, hale.forrige, null); // Legger inn noden bakerst
         } else { // Hvis indeksen ikke er først eller sist i listen
             Node<T> p = hode;
-            for (int i = 1; i < indeks; i++) {
+            for (int i = 1; i < indeks; i++) { // Leter etter indeksen
                 p = p.neste;
             }
-            p.neste = new Node<>(verdi, p.forrige, p.neste);
+            p.neste = new Node<>(verdi, p.forrige, p.neste); // Lager node når indeksen er funne
         }
         antall++;
         endringer++;
@@ -146,8 +148,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T hent(int indeks) { // Oppgave 3a
         //throw new UnsupportedOperationException();
-        indeksKontroll(indeks, false);
-        return finnNode(indeks).verdi;
+        indeksKontroll(indeks, false); // Sjekker om indeksen er gyldig
+        return finnNode(indeks).verdi; // Finner verdien til indeksen
     }
 
     @Override
@@ -157,7 +159,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {  // Oppgave 3a
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi, "Null-verdier kan ikke legges inn."); // Sjekker om den nye verdien er null
+        indeksKontroll(indeks, false); // Sjekker om indeksen er gyldig.
+        Node<T> p = finnNode(indeks); // Finner noden
+        T gammelverdi = p.verdi;
+        p.verdi = nyverdi; // Bytter med den nye verdien
+        return gammelverdi;
     }
 
     @Override
