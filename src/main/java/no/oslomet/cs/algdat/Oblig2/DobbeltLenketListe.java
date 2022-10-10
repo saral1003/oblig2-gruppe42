@@ -91,22 +91,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 }
             }
             return p;
-        } else {
+        } else if (tom()) {
             throw new NullPointerException("Listen er tom!");
         }
+        return null;
     }
 
     public Liste<T> subliste(int fra, int til) {    // Oppgave 3b
         //throw new UnsupportedOperationException();
-        //indeksKontroll(fra, false);
-        //indeksKontroll(til, false);
+        indeksKontroll(fra, true);
+        indeksKontroll(til, true);
 
-        Liste<T> subliste = new DobbeltLenketListe<>();
+        if ((fra < 0 ) || (til > antall)) { // Sjekker om indeksene er gyldige
+            throw new IndexOutOfBoundsException("Ugyldig indeks!");
+        }
+        if (fra > til){ // Sjekker om fra er større enn til
+            throw new IllegalArgumentException("Input er feil!");
+        }
+
+        Liste<T> subliste = new DobbeltLenketListe<>(); // Oppretter sublisten
+        if ((fra == 0) && (til == 0)) { // Sjekker om indeksene er 0
+            return subliste;
+        }
 
         Node<T> p = finnNode(fra);
 
-        for (int i = fra; i < til; i++) {
-            subliste.leggInn(p.verdi);
+        for (int i = fra; i < til; i++) { // Løper igjennom listen
+            subliste.leggInn(p.verdi); // Legger inn verdien
             p = p.neste;
         }
 
@@ -154,10 +165,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) { // Oppgave 5 - Koden er inspirert av Kompendiet, promgramkode 3.3.2 f
         //throw new UnsupportedOperationException();
-        indeksKontroll(indeks, false);
         Objects.requireNonNull(verdi, "Ikke gyldig tall.");
+        indeksKontroll(indeks, true);
         if (indeks == 0) { // Verdi legges først hvis indeks er null
-            hode = new Node<>(verdi, null, null);
+            //Node<T> tmp = hode;
+            hode = new Node<>(verdi, null, hode);
             if (antall == 0) { // Hvis listen er tom
                 hale = hode;
             }
