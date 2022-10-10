@@ -165,7 +165,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) { // Oppgave 4
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        Node<T> posisjon = hode;                        // Node "posisjon" er starten av listen(hode)
+        int indeks = 0;                                 // en teller kalt "indeks" er satt til null
+        for (int i = 0; i < antall; i++){               // en for-løkke løper gjennom listen
+            if (posisjon.verdi.equals(verdi)) {         // hvis posisjonen i listen sin verdi matcher med verdien vi søker...
+                return indeks;                          // returneres indeksen...
+                break;                                  // og det hoppes ut av for-løkka
+            }
+            else {                                      // hvis ikke posisjonen i listen sin verdi matcher med verdien vi søker...
+                posisjon = posisjon.neste;              // ... hopper vi videre til neste posisjon...
+                indeks++;                               // ... og indekstallet økes med 1
+            }
+        }
+        return -1;                                      // hvis verdien ikke finnes i listen returneres -1;
     }
 
     @Override
