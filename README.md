@@ -23,3 +23,7 @@ så lenge det ikke pekes på listen sin "hale". Gjøres det, legges den verdien 
 StringBuilderen vår kan nå returneres som en String. 
 I **"omvendtString()"** benyttes samme konsept, men i motsatt rekkefølge(det startes på "hale" og går baklengs til "hode"). 
  
+I **oppgave 2b** ble det først opprettet en ny Node. Objects.requreNonNull benyttes for å forsikre oss om at den nye Noden ikke er null. Først sjekkes det
+om hode og hale er null og antall er 0; i så tilfelle peker hode og hale på den nye noden, og både antall og endringer øker med en. Om ikke listen er tom
+legges halepekeren inn bakerst i listen og det forsikres at rekkefølgen er listen + node "ny" + node "p"(med verdien)(som er hale). 
+Igjen; både antall og endringer øker med en. "true" kan dernest returneres. 

@@ -112,7 +112,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");     // Null-verdier er ikke tillatt
 
-        if (hode == null && hale == null && antall == 0){                        // Tilfelle 1(listen er tom på forhånd)
+        if (hode == null && hale == null && antall == 0){                  // Tilfelle 1(listen er tom på forhånd)
             hode = hale = p;                                               // Både hode og hale peker på den nye noden
             antall += 1;                                                   // antall øker med en
             endringer += 1;                                                // endringer øker med en
