@@ -135,7 +135,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");     // Null-verdier er ikke tillatt
 
-        if (hode == null && hale == null && antall == 0){                        // Tilfelle 1(listen er tom på forhånd)
+        if (hode == null && hale == null && antall == 0){                  // Tilfelle 1(listen er tom på forhånd)
             hode = hale = p;                                               // Både hode og hale peker på den nye noden
             antall += 1;                                                   // antall øker med en
             endringer += 1;                                                // endringer øker med en
@@ -175,8 +175,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean inneholder(T verdi) { // Oppgave 4
-        throw new UnsupportedOperationException();
+    public boolean inneholder(T verdi) { // Oppgave 4 - del 2
+        //throw new UnsupportedOperationException();
+        if (indeksTil(verdi) != -1) {   // hvis metoden indeksTil IKKE er -1, inneholder listen verdien...
+            return true;                // ... og true returneres
+        }
+        else {                          // hvis ikke, betyr det at verdien finnes i listen...
+            return false;               // ... og false returneres
     }
 
     @Override
@@ -187,8 +192,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public int indeksTil(T verdi) { // Oppgave 4
-        throw new UnsupportedOperationException();
+    public int indeksTil(T verdi) { // Oppgave 4 - del 1
+        //throw new UnsupportedOperationException();
+        Node<T> posisjon = hode;                        // Node "posisjon" er starten av listen(hode)
+        int indeks = 0;                                 // en teller kalt "indeks" er satt til null
+        for (int i = 0; i < antall; i++){               // en for-løkke løper gjennom listen
+            if (posisjon.verdi.equals(verdi)) {         // hvis posisjonen i listen sin verdi matcher med verdien vi søker...
+                return indeks;                          // returneres indeksen...
+                break;                                  // og det hoppes ut av for-løkka
+            }
+            else {                                      // hvis ikke posisjonen i listen sin verdi matcher med verdien vi søker...
+                posisjon = posisjon.neste;              // ... hopper vi videre til neste posisjon...
+                indeks++;                               // ... og indekstallet økes med 1
+            }
+        }
+        return -1;                                      // hvis verdien ikke finnes i listen returneres -1;
     }
 
     @Override
