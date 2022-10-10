@@ -46,37 +46,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe(T[] a) {  // Oppgave 1
         //throw new UnsupportedOperationException();
-        Objects.requireNonNull(a, "Tabellen a er null!");
+        Objects.requireNonNull(a, "Tabellen a er null!"); // Sjekker om tabellen er tom
 
-        if (a.length == 0) {
-            hode = hale = null;
-        } else if (a.length == 1) {
-            hode = new Node<>(a[0], null, null);
-            hale = hode;
-            hode.forrige = null;
-            hode.neste = null;
-            antall++;
-            endringer++;
-        } else {
-            for (int i = 0; i < a.length; i++){
-                if (a[i] != null) {
-                    hode = new Node<>(a[i], null, hode.neste);
-                    endringer++;
-                    antall++;
-                    return;
-                }
+        Node<T> q = null; // Brukes for å finne verdien til halen
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null) { // Sjekker om verdien i a er null
+                continue;
             }
-            Node<T> p = hode;
-            for (int i = 1; i < a.length; i++){
-                if (a[i] != null) {
-                    new Node<>(a[i], p.forrige, p.neste);
-                    antall++;
-                    endringer++;
-                }
+            if (hode == null) { // Setter inn hode
+                hode = new Node<>(a[i], null, null);
+                hale = hode;
+                q = hode;
+            } else {
+                Node<T> p = new Node<>(a[i]); // Oppretter nye noder og setter inn verdien
+                q.neste = p;
+                p.forrige = q;
+                q = p;
             }
-            hode.forrige = null;
-            hale.neste = null;
+            antall++; // Øker antall for hver verdi vi legger inn
         }
+        hale = q; // Setter hale til q
     }
 
     private Node<T> finnNode(int index) {   // Oppgave 3a
@@ -96,6 +85,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Liste<T> subliste(int fra, int til) {    // Oppgave 3b
         throw new UnsupportedOperationException();
+        //fratilKontroll()
+        //return subliste;
     }
 
     @Override
@@ -121,7 +112,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");     // Null-verdier er ikke tillatt
 
-        if (hode == 0 && hale == 0 && antall == 0){                        // Tilfelle 1(listen er tom på forhånd)
+        if (hode == null && hale == null && antall == 0){                        // Tilfelle 1(listen er tom på forhånd)
             hode = hale = p;                                               // Både hode og hale peker på den nye noden
             antall += 1;                                                   // antall øker med en
             endringer += 1;                                                // endringer øker med en
