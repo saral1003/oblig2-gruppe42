@@ -37,7 +37,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
 
-    public DobbeltLenketListe() {   // ???
+    public DobbeltLenketListe() {   // Oppgave 1
         //throw new UnsupportedOperationException();
         hode = null;
         antall = 0;
