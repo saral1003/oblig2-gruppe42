@@ -181,7 +181,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return true;                // ... og true returneres
         }
         else {                          // hvis ikke, betyr det at verdien finnes i listen...
-            return false;               // ... og false returneres
+            return false;
+        }// ... og false returneres
     }
 
     @Override
@@ -199,7 +200,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for (int i = 0; i < antall; i++){               // en for-løkke løper gjennom listen
             if (posisjon.verdi.equals(verdi)) {         // hvis posisjonen i listen sin verdi matcher med verdien vi søker...
                 return indeks;                          // returneres indeksen...
-                break;                                  // og det hoppes ut av for-løkka
+                                                        // og det hoppes ut av for-løkka
             }
             else {                                      // hvis ikke posisjonen i listen sin verdi matcher med verdien vi søker...
                 posisjon = posisjon.neste;              // ... hopper vi videre til neste posisjon...
