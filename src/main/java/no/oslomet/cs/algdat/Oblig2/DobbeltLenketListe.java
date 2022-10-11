@@ -174,7 +174,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale = hode;
             }
         } else if (indeks == antall) { // Hvis indeksen er bakerst
-            hale = hale.neste = new Node<>(verdi, hale.forrige, null); // Legger inn noden bakerst
+            hale = hale.neste = new Node<>(verdi, hale, null); // Legger inn noden bakerst
         } else { // Hvis indeksen ikke er først eller sist i listen
             Node<T> p = hode;
             for (int i = 1; i < indeks; i++) { // Leter etter indeksen
@@ -276,26 +276,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         /*// 1. måte
         Node<T> p = hode;
-        while(p != null) {
+        while(p != null) { // går igjennom listen
             hode = p.neste;
-            hode.forrige = null;
+            hode.forrige = null; // Sletter den forrige noden
             p = hode;
-            if (hode == hale) {
+            if (hode == hale) { // Hvis det bare er en node igjen
                 hode = null;
                 hale = null;
                 antall = 0;
                 endringer++;
-                break;
+                break; // Avlslutter løkken siden listen er tom
             }
         }*/
 
         // 2. måte
-        for (int i = 0; i < antall-1; i++) {
+        for (int i = 0; i < antall-1; i++) { // Går igjennom listen bortsett fra den siste noden
             hode = hode.neste;
-            fjern(i);
+            fjern(i); // Fjerner noden vi er på
             endringer++;
-            if (hode == hale) {
-                fjern(i);
+            if (hode == hale) { // Hvis det er en node igjen
+                fjern(i); // fjerner hode/hale
                 antall = 0;
                 break;
             }

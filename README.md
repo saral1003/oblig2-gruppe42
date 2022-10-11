@@ -57,6 +57,9 @@ noden skal settes inn midt i listen et sted, så da bruker vi en for-løkke for 
 
 **Oppgave 6**
 
-**Oppgave 7**
+**Oppgave 7** Måte 1 løste jeg på ved å gå igjennom listen med en while-løkke som sjekker om p (hode.neste) er null, for det betyr at vi har kommet til slutten.
+Da blir hode, hale gjort om til null, antall til 0 og endringer blir økt.
+Den andre måten er gjort ved at man går igjennom listen -1 for å bruke fjern-metoden på alle nodene unntatt den siste som man bruker når hode == hale.
+Da brukes fjern-metoden på den siste og antall blir satt til 0. Så hopper vi ut av løkken.
 
 **Oppgave 8**
