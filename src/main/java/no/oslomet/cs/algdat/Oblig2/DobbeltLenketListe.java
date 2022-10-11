@@ -260,19 +260,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         else {                                  // Ellers finnes indeks i listen...
             Node<T> q = finnNode(indeks);       // Node "q" settes til indeks via finnNode-metoden fra oppgave 3
-            p = q.verdi;                        // "p" settes til indeks
+            p = q;                        // "p" settes til indeks
             q.neste = q.neste.neste;            // Pekerne oppdateres slik at verdien på posisjon indeks fjernes...
             q.neste.forrige = q;                // ... ganske enkelt ved å hoppe over den
         }
 
         antall--;                               // antall minker
         endringer++;                            // endringer øker
-        return p;                               // (verdien til) "p" returneres
+        return p.verdi;                               // (verdien til) "p" returneres
     }
 
     @Override
     public void nullstill() {   // Oppgave 7
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+
+        // 1. måte
+        Node<T> p = hode;
+        while(p != null) {
+
+        }
+
+        // 2. måte
     }
 
     @Override
