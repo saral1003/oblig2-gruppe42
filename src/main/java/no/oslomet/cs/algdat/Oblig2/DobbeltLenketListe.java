@@ -295,14 +295,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public String omvendtString() { //Oppgave 2a - del 2
         //throw new UnsupportedOperationException();
         StringBuilder omvendtTegnstreng = new StringBuilder();         // Oppretter en StringBuilder "omvendtTegnstreng"
-        Node<T> p = hale;                                              // Node "p" starter på hale(listen sin siste verdi)
         omvendtTegnstreng.append('[');                                 // "omvendtTegnstreng" starter med en "["
 
-        while (p != hode) {                                            // Så lenge "p" ikke er hode(listen sin første verdi)...
+        Node<T> p = hale;                                              // Node "p" starter på hale(listen sin siste verdi)
+        omvendtTegnstreng.append(hale.verdi);
+
+        p = p.forrige;
+
+        while (p != null) {                                            // Så lenge "p" ikke er hode(listen sin første verdi)...
             omvendtTegnstreng.append(p.verdi + ", ");                  // ... tar "omvendtTegnstreng" med en verdi og legger til et komma...
             p = p.forrige;                                             // ... og hopper videre til forrige verdi i listen
         }
-        omvendtTegnstreng.append(p.verdi + "]");                       // Peker "p" på hode, legges verdien til i "tegnstreng" som avsluttes med en "]"
+        omvendtTegnstreng.append("]");                                   // Peker "p" på hode, legges verdien til i "tegnstreng" som avsluttes med en "]"
         return omvendtTegnstreng.toString();                           // "omvendtTegnstreng" konverteres til en String og returneres
     }
 
