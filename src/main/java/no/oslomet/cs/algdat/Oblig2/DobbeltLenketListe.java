@@ -308,7 +308,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() { // Oppgave 8b
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();    // returnerer en instans av iteratorklassen
     }
 
     public Iterator<T> iterator(int indeks) {   // Oppgave 8d
