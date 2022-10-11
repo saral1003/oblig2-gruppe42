@@ -320,15 +320,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         omvendtTegnstreng.append('[');                                 // "omvendtTegnstreng" starter med en "["
         Node<T> p = hale;                                              // Node "p" starter på hale(listen sin siste verdi)
 
-        while (p != null) {                                            // Så lenge "p" ikke er hode(listen sin første verdi)...
-            if (p == hode) {
-                omvendtTegnstreng.append(p.verdi);
-            } else {
-                omvendtTegnstreng.append(p.verdi).append(", ");                  // ... tar "omvendtTegnstreng" med en verdi og legger til et komma...
+        while (p != null) {                                            // Så lenge "p" ikke er null...
+            if (p == hode) {                                           // Hvis "p" er lik hode betyr det at det kun er en verdi i listen...
+                omvendtTegnstreng.append(p.verdi);                     // ... den verdien legges ved
+            } else {                                                   // Om "p" ikke er lik hode betyr det at listen er lenger.
+                omvendtTegnstreng.append(p.verdi).append(", ");        // Da tar "omvendtTegnstreng" med en verdi og legger til et komma og mellomrom...
             }
             p = p.forrige;                                             // ... og hopper videre til forrige verdi i listen
         }
-        omvendtTegnstreng.append("]");                                   // Peker "p" på hode, legges verdien til i "tegnstreng" som avsluttes med en "]"
+        omvendtTegnstreng.append("]");                                 // Når verdiene i listen er hoppet gjennom, legges verdien til i "tegnstreng" som avsluttes med en "]"
         return omvendtTegnstreng.toString();                           // "omvendtTegnstreng" konverteres til en String og returneres
     }
 
