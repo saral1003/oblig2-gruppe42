@@ -239,8 +239,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public T fjern(int indeks) {    // Oppgave 6
-        throw new UnsupportedOperationException();
+    public T fjern(int indeks) {    // Oppgave 6 - del 1
+        //throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);           // Sjekker om verdi er i listen, hvis ikke returneres false
+
+        Node<T> p;                              // Oppretter Node "p"
+        if (antall == 1) {                      // Hvis det kun er 1 node i listen...
+            p = hode;                           // ...er "p" hode...
+            hode = hale = null;                 // ...og hode og hale er begge "null"
+        }
+        else if (indeks == 0) {                 // Eller hvis indeks er "0" og vi må bytte hode...
+            p = hode;                           // ... er "p" det nye hode...
+            hode = hode.neste;                  // ...som settes på plassen etter det "gamle" hode...
+            hode.forrige = null;                // ...som blir satt til "null" og fjernet
+        }
+        else if (indeks == antall-1) {          // Eller hvis indeks er lik halen, og vi må bytte hale...
+            p = hale;                           // ... er "p" den nye halen...
+            hale = hale.forrige;                // ... som settes på plassen før den "gamle" halen
+            hale.neste = null;                  // ...som blir satt til "null" og fjernet
+        }
+        else {                                  // Ellers finnes indeks i listen...
+            Node<T> q = finnNode(indeks);       // Node "q" settes til indeks via finnNode-metoden fra oppgave 3
+            p = q.verdi;                        // "p" settes til indeks
+            q.neste = q.neste.neste;            // Pekerne oppdateres slik at verdien på posisjon indeks fjernes...
+            q.neste.forrige = q;                // ... ganske enkelt ved å hoppe over den
+        }
+
+        antall--;                               // antall minker
+        endringer++;                            // endringer øker
+        return p;                               // (verdien til) "p" returneres
     }
 
     @Override
@@ -281,7 +308,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() { // Oppgave 8b
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();    // returnerer en instans av iteratorklassen
     }
 
     public Iterator<T> iterator(int indeks) {   // Oppgave 8d
