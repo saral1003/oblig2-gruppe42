@@ -274,7 +274,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public void nullstill() {   // Oppgave 7
         //throw new UnsupportedOperationException();
 
-        // 1. måte
+        /*// 1. måte
         Node<T> p = hode;
         while(p != null) {
             hode = p.neste;
@@ -287,14 +287,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 endringer++;
                 break;
             }
-        }
+        }*/
 
         // 2. måte
-        for (int i = 0; i < antall; i++) {
+        for (int i = 0; i < antall-1; i++) {
             hode = hode.neste;
             fjern(i);
+            endringer++;
+            if (hode == hale) {
+                fjern(i);
+                antall = 0;
+                break;
+            }
         }
-
     }
 
     @Override
