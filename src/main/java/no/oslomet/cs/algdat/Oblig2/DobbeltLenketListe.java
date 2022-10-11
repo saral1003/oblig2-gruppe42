@@ -277,10 +277,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         // 1. måte
         Node<T> p = hode;
         while(p != null) {
-
+            hode = p.neste;
+            hode.forrige = null;
+            p = hode;
+            if (hode == hale) {
+                hode = null;
+                hale = null;
+                antall = 0;
+                endringer++;
+                break;
+            }
         }
 
         // 2. måte
+        for (int i = 0; i < antall; i++) {
+            hode = hode.neste;
+            fjern(i);
+        }
+
     }
 
     @Override
