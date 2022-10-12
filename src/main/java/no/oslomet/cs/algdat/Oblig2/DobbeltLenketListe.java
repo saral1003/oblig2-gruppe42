@@ -417,7 +417,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         public T next() {   // Oppgave 8a
             //throw new UnsupportedOperationException();
             if (iteratorendringer != endringer) {                                                           // Hvis iteratorendringer er ulik endringer...
-                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer!")       // ...kastes en ConcurrentModificationException
+                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer!");      // ...kastes en ConcurrentModificationException
             }
             if (hasNext() != true) {                                                                        // Hvis det ikke er flere igjen i listen (hasNext() ikke true)...
                 throw new NoSuchElementException("Det er ikke flere igjen i listen");                       // ...kastes en ConcurrentModificationException
