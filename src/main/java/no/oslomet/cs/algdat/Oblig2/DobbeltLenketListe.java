@@ -167,20 +167,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //throw new UnsupportedOperationException();
         Objects.requireNonNull(verdi, "Ikke gyldig tall.");
         indeksKontroll(indeks, true);
-        if (indeks == 0) { // Verdi legges først hvis indeks er null
-            //Node<T> tmp = hode;
+
+        if (antall == 0) { // Hvis listen er tom
             hode = new Node<>(verdi, null, hode);
-            if (antall == 0) { // Hvis listen er tom
-                hale = hode;
-            }
+            hale = hode; // Hode og hale peker mot samme node siden det bare er en node i listen
+        }
+        if (indeks == 0 && antall != 0) { // Verdi legges først hvis indeks er null
+            Node<T> p = finnNode(indeks);
+            hode = new Node<>(verdi, null, hode);
+            p.forrige = hode;
         } else if (indeks == antall) { // Hvis indeksen er bakerst
             hale = hale.neste = new Node<>(verdi, hale, null); // Legger inn noden bakerst
         } else { // Hvis indeksen ikke er først eller sist i listen
-            Node<T> p = hode;
-            for (int i = 1; i < indeks; i++) { // Leter etter indeksen
-                p = p.neste;
-            }
-            p.neste = new Node<>(verdi, p.forrige, p.neste); // Lager node når indeksen er funne
+            Node<T> p = finnNode(indeks); // Finner verdien
+            p.forrige.neste = new Node<>(verdi, p.forrige, p); // Lager ny node
+            p.forrige = p.forrige.neste;
         }
         antall++;
         endringer++;

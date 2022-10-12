@@ -51,9 +51,9 @@ Finnes ikke verdien, returneres -1. I den mindre delen (inneholder(T verdi)) bru
 Hvis det er "-1" fantes ikke verdien og returnerer false. 
 
 **Oppgave 5** Metoden leggInn(int indeks, T verdi) sjekker først om indeksen og verdien er gyldige med indeksKontroll og Objects.requireNotNull.
-Så sjekker vi om indeksen er null med en if-test. Da legger vi inn verdien først og den blir da hode. Hvis listen er tom fra før av blir hale også hode.
+Hvis listen er tom fra før av blir hale også hode og vi lager en ny node. Så sjekker vi om indeksen er null med en if-test. Da legger vi inn verdien først og den blir da hode.
 Hvis indeksen er samme som antall, betyr det at noden skal settes bakerst, og denne verdien blir halen. Hvis vi kommer på else så betyr det at
-noden skal settes inn midt i listen et sted, så da bruker vi en for-løkke for å finne indeksen, og så setter verdien der mens vi flytter alle de neste nodene ett hakk.
+noden skal settes inn midt i listen et sted, så da bruker vi finnNode() for å finne indeksen, og så setter verdien der mens vi flytter alle de neste nodene ett hakk.
 
 **Oppgave 6**
 
