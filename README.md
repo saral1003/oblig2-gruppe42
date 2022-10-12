@@ -55,7 +55,10 @@ Hvis listen er tom fra før av blir hale også hode og vi lager en ny node. Så 
 Hvis indeksen er samme som antall, betyr det at noden skal settes bakerst, og denne verdien blir halen. Hvis vi kommer på else så betyr det at
 noden skal settes inn midt i listen et sted, så da bruker vi finnNode() for å finne indeksen, og så setter verdien der mens vi flytter alle de neste nodene ett hakk.
 
-**Oppgave 6**
+**Oppgave 6** består av to måter å fjerne på. I metoden "T fjern(int indeks)" brukes indeksKontroll for å sjekke om indeks er i listen. Node "p" brukes deretter i de neste 4 if/else if/else-tilfellene.
+Hvis kun 1 node; p er hode, de "originale" hode og hale er null. Hvis indeks == 0(bytte hode); "p" er det nye hode som settes etter det originale hode som blir "null". Hvis indeks == antall - 1(bytte hale);
+samme prinsipp som for bytte av hode, bare motsatt. Hvis indeks finnes i listen; hjelpenode settes til indeks ved hjelp av finnNode(indeks) fra 3a), p settes lik hjelpenoden(altså indeks) og pekerne oppdateres 
+slik at de peker forbi verdien som skal fjernes.  
 
 **Oppgave 7** Måte 1 løste jeg på ved å gå igjennom listen med en while-løkke som sjekker om p (hode.neste) er null, for det betyr at vi har kommet til slutten.
 Da blir hode, hale gjort om til null, antall til 0 og endringer blir økt.
