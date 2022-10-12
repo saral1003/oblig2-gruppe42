@@ -418,7 +418,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         public T next() {   // Oppgave 8a
             //throw new UnsupportedOperationException();
             if (iteratorendringer != endringer) {                                                           // Hvis iteratorendringer er ulik endringer...
-                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer!");      // ...kastes en ConcurrentModificationException
+                throw new ConcurrentModificationException("Iteratorendringer er IKKE lik endringer!");      // ...kastes en ConcurrentModificationException
             }
             if (hasNext() != true) {                                                                        // Hvis det ikke er flere igjen i listen (hasNext() ikke true)...
                 throw new NoSuchElementException("Det er ikke flere igjen i listen");                       // ...kastes en ConcurrentModificationException
@@ -428,7 +428,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             Node<T> verdienTilDenne = denne;                                                                // Node "verdienTilDenne" skal være "denne"
             denne = denne.neste;                                                                            // "denne" flyttes til den neste node
-            return verdienTilDenne;                                                                         // "verdienTilDenne" returneres
+            return verdienTilDenne.verdi;                                                                   // "verdienTilDenne" returneres
         }
         /*
         @Override
