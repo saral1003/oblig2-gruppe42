@@ -232,6 +232,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> p = finnNode(indeks); // Finner noden
         T gammelverdi = p.verdi;
         p.verdi = nyverdi; // Bytter med den nye verdien
+        endringer++;
         return gammelverdi;
     }
 
@@ -302,7 +303,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         else {                                  // Ellers finnes indeks i listen...
             Node<T> q = finnNode(indeks);       // Node "q" settes til indeks via finnNode-metoden fra oppgave 3
-            p = q.verdi;                        // "p" settes til indeks
+            p = q;                        // "p" settes til indeks
             q.forrige.neste = q.neste;          // Pekerne oppdateres slik at verdien på posisjon indeks fjernes...
             q.neste.forrige = q.forrige;        // ... ganske enkelt ved å hoppe over den
         }
@@ -316,8 +317,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public void nullstill() {   // Oppgave 7
         //throw new UnsupportedOperationException();
 
-        /*// 1. måte
-        Node<T> p = hode;
+        // 1. måte - Kommentert ut siden måte 2 kjørte litt raskere
+        /*Node<T> p = hode;
         while(p != null) { // går igjennom listen
             hode = p.neste;
             hode.forrige = null; // Sletter den forrige noden
@@ -332,15 +333,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }*/
 
         // 2. måte
-        for (int i = 0; i < antall-1; i++) { // Går igjennom listen bortsett fra den siste noden
-            hode = hode.neste;
-            fjern(i); // Fjerner noden vi er på
-            endringer++;
-            if (hode == hale) { // Hvis det er en node igjen
-                fjern(i); // fjerner hode/hale
-                antall = 0;
-                break;
-            }
+        int listeLengde = antall;
+        for (int i = 0; i < listeLengde; i++) { // Går igjennom listen fram til vi når listelengden
+            fjern(0); // Fjerner noden vi er på
         }
     }
 
