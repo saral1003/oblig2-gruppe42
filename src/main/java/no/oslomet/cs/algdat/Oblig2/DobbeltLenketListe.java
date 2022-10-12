@@ -302,7 +302,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         else {                                  // Ellers finnes indeks i listen...
             Node<T> q = finnNode(indeks);       // Node "q" settes til indeks via finnNode-metoden fra oppgave 3
-            p = q;                              // "p" settes til indeks
+            p = q.verdi;                        // "p" settes til indeks
             q.forrige.neste = q.neste;          // Pekerne oppdateres slik at verdien på posisjon indeks fjernes...
             q.neste.forrige = q.forrige;        // ... ganske enkelt ved å hoppe over den
         }
