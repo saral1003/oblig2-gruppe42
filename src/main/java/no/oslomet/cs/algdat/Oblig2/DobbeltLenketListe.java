@@ -240,45 +240,52 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public boolean fjern(T verdi) { // Oppgave 6 - del 2
         //throw new UnsupportedOperationException();
         Node<T> p = hode;
+        boolean funnetVerdi = false;
 
-        if (verdi == null) {
+        if(antall == 0){
             return false;
         }
 
-        if (p == null) {
-            return false;
-        }
-
-        while (p != null) {
+        while(p != null) {
             if (p.verdi.equals(verdi)) {
+                funnetVerdi = true;
                 break;
+            } else {
+                p = p.neste;
             }
-            p = p.neste;
         }
 
-        if (p == hode) {
-            hode = hode.neste;
-            hode.forrige = null;
-            hode.neste.forrige = null;
-            p.neste = null;
+        if(funnetVerdi){
+            if(antall == 1) {
+                p.neste = null;
+                p.forrige = null;
+                hale = null;
+                hode = null;
+                antall = 0;
+                endringer++;
+                return true;
+            }
+            if(p == hode){
+                hode.neste.forrige = null;
+                hode = hode.neste;
+                hode.forrige = null;
+                p.neste = null;
+            } else if (p == hale){
+                hale.forrige.neste = null;
+                hale = hale.forrige;
+                hale.neste = null;
+                p.forrige = null;
+            } else {
+                p.neste.forrige = p.forrige;
+                p.forrige.neste = p.neste;
+                p.neste = null;
+                p.forrige = null;
+            }
+            endringer++;
+            antall--;
+            return true;
         }
-        else if (p == hale) {
-            hale = hale.forrige;
-            hale.neste = null;
-            hale.forrige.neste = null;
-            p.forrige = null;
-        }
-        else {
-            p.forrige.neste = p.neste;
-            p.neste.forrige = p.forrige;
-            p.neste = null;
-            p.forrige = null;
-        }
-
-        antall--;
-        endringer++;
-
-        return true;
+        return false;
     }
 
     @Override
