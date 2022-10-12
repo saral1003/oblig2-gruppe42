@@ -402,7 +402,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks) {    // Oppgave 8c
-            throw new UnsupportedOperationException();
+            //throw new UnsupportedOperationException();
+            denne = finnNode(indeks);                       // pekeren "denne" er satt til noden med oppgitt indeks
+            fjernOK = false;                                // blir sann når next() kalles
+            iteratorendringer = endringer;                  // teller endringer
         }
 
         @Override
