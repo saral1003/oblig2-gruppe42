@@ -235,8 +235,48 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) { // Oppgave 6
-        throw new UnsupportedOperationException();
+    public boolean fjern(T verdi) { // Oppgave 6 - del 2
+        //throw new UnsupportedOperationException();
+        Node<T> p = hode;
+
+        if (verdi == null) {
+            return false;
+        }
+
+        if (p == null) {
+            return false;
+        }
+
+        while (p != null) {
+            if (p.verdi.equals(verdi)) {
+                break;
+            }
+            p = p.neste;
+        }
+
+        if (p == hode) {
+            hode = hode.neste;
+            hode.forrige = null;
+            hode.neste.forrige = null;
+            p.neste = null;
+        }
+        else if (p == hale) {
+            hale = hale.forrige;
+            hale.neste = null;
+            hale.forrige.neste = null;
+            p.forrige = null;
+        }
+        else {
+            p.forrige.neste = p.neste;
+            p.neste.forrige = p.forrige;
+            p.neste = null;
+            p.forrige = null;
+        }
+
+        antall--;
+        endringer++;
+
+        return true;
     }
 
     @Override
@@ -261,14 +301,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         else {                                  // Ellers finnes indeks i listen...
             Node<T> q = finnNode(indeks);       // Node "q" settes til indeks via finnNode-metoden fra oppgave 3
-            p = q;                        // "p" settes til indeks
+            p = q;                              // "p" settes til indeks
             q.neste = q.neste.neste;            // Pekerne oppdateres slik at verdien på posisjon indeks fjernes...
             q.neste.forrige = q;                // ... ganske enkelt ved å hoppe over den
         }
 
-        antall--;                               // antall minker
-        endringer++;                            // endringer øker
-        return p.verdi;                               // (verdien til) "p" returneres
+        antall--;                               // Antall minker
+        endringer++;                            // Endringer øker
+        return p.verdi;                         // Verdien til "p" returneres
     }
 
     @Override
