@@ -62,4 +62,11 @@ Da blir hode, hale gjort om til null, antall til 0 og endringer blir økt.
 Den andre måten er gjort ved at man går igjennom listen med en for-løkke og bruker fjern-metoden på alle nodene. Vi lager listeLengde slik at når vi går igjennom listen 
 så vil vi alltid være på 0 siden antall blir trekt fra i fjern(). Når antall er 0 så er listen tom.
 
-**Oppgave 8**
+**Oppgave 8a** følger oppgaveteksten ganske nøyaktig. ConcurrentModificationException og NoSuchElementException kastes ved feil i endringer og når listen er ferdig. 
+Noden "verdienTilDenne" brukes i samarbeid med "denne" for å flytte til neste node og returnere verdien. 
+
+I **oppgave 8b** returneres en instans av iteratorklassen. 
+
+I **oppgave 8c** settes pekeren "denne" til noden med oppgitt indeks, og kopierer de to siste linjene fra DobbeltLenketListeIterator()(kodet rett over). 
+
+I **oppgave 8d** brukes indeksKontroll for sjekk om indeks er lovlig og dernest returnerer instans av iteratorklassen med hjelp fra c)(DobbeltLenketListeIterator(int indeks)).
