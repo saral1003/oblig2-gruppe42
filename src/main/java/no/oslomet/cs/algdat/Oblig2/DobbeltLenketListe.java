@@ -240,12 +240,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public boolean fjern(T verdi) { // Oppgave 6 - del 2
         //throw new UnsupportedOperationException();
         Node<T> p = hode;
+        Node<T> q = null;
 
         if (verdi == null) {
-            return false;
-        }
-
-        if (p == null) {
             return false;
         }
 
@@ -253,26 +250,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (p.verdi.equals(verdi)) {
                 break;
             }
-            p = p.neste;
+            q = p;
+            p = q.neste;
         }
 
-        if (p == hode) {
-            hode = hode.neste;
-            hode.forrige = null;
-            hode.neste.forrige = null;
-            p.neste = null;
+        if (p == null) {
+            return false;
         }
-        else if (p == hale) {
-            hale = hale.forrige;
-            hale.neste = null;
-            hale.forrige.neste = null;
-            p.forrige = null;
+        else if (p == hode) {
+            hode = hode.neste;
         }
         else {
-            p.forrige.neste = p.neste;
-            p.neste.forrige = p.forrige;
-            p.neste = null;
-            p.forrige = null;
+            q.neste = p.neste;
+        }
+
+        if (p == hale) {
+            hale = q;
+        }
+        else {
+            p.neste.forrige = p;
         }
 
         antall--;
