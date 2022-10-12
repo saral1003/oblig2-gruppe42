@@ -239,53 +239,59 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public boolean fjern(T verdi) { // Oppgave 6 - del 2
         //throw new UnsupportedOperationException();
-        Node<T> p = hode;
-        boolean funnetVerdi = false;
+        Node<T> p = hode;                           // Oppretter Node "p" som settes til hode
+        boolean funnetVerdi = false;                // Bruker boolean "funnetVerdi" for å verifisere om verdien er funnet
 
-        if(antall == 0){
-            return false;
+        if(antall == 0){                            // Hvis antall er lik 0, dvs listen er tom, kan verdi umulig være i listen...
+            return false;                           // ... så false returneres
         }
 
-        while(p != null) {
-            if (p.verdi.equals(verdi)) {
-                funnetVerdi = true;
-                break;
-            } else {
-                p = p.neste;
+        while(p != null) {                          // Så lenge p ikke er null...
+            if (p.verdi.equals(verdi)) {            // ...hvis p.verdi stemmer overens med verdien...
+                funnetVerdi = true;                 // ...får vi true på "funnetVerdi"...
+                break;                              // ...og hopper ut av while-løkka
+            } else {                                // Ellers...
+                p = p.neste;                        // ...bare fortsetter vi til neste i listen
             }
         }
 
-        if(funnetVerdi){
-            if(antall == 1) {
-                p.neste = null;
-                p.forrige = null;
-                hale = null;
-                hode = null;
-                antall = 0;
-                endringer++;
-                return true;
+        if(funnetVerdi){                            // Hvis verdien ble funnet...
+            if(antall == 1) {                       // Hvis antall == 1, (listen består av 1 verdi)...
+                p.neste = null;                     // ...skal den neste i listen være null...
+                p.forrige = null;                   // ...den forrige i listen være null...
+                hale = null;                        // ...halen være null...
+                hode = null;                        // ...hode være null...
+                antall = 0;                         // ...antall settes til 0...
+                endringer++;                        // ...endringer øke...
+                return true;                        // ... og true returneres!
             }
-            if(p == hode){
-                hode.neste.forrige = null;
-                hode = hode.neste;
-                hode.forrige = null;
-                p.neste = null;
-            } else if (p == hale){
-                hale.forrige.neste = null;
-                hale = hale.forrige;
-                hale.neste = null;
-                p.forrige = null;
-            } else {
+
+            if(p == hode){                          // Hvis p == hode (verdien er i starten av listen)
+                hode.neste.forrige = null;          // ...skal "originalhodet" bli null...
+                hode = hode.neste;                  // ..."erstatterhode" settes etter der hvor "originalhode" ligger...
+                hode.forrige = null;                // ...pekes vekk fra "originalhode"...
+                p.neste = null;                     // ... og p.neste blir null.
+            }
+
+            else if (p == hale){                    // Eller hvis p == hale(verdien er sist i listen)
+                hale.forrige.neste = null;          // ... skal "originalhalen" bli null
+                hale = hale.forrige;                // ..."erstatterhalen" settes før der hvor "originalhalen" ligger...
+                hale.neste = null;                  // ...pekes vekk fra "originalhalen"...
+                p.forrige = null;                   // ...og p.forrige blir null.
+            }
+
+            else {                                  // Ellers (verdi finnes mellom hode og hale
                 p.neste.forrige = p.forrige;
                 p.forrige.neste = p.neste;
                 p.neste = null;
                 p.forrige = null;
             }
-            endringer++;
-            antall--;
-            return true;
+
+            endringer++;                            // Endringer øker
+            antall--;                               // Antall minker
+            return true;                            // true returneres
         }
-        return false;
+        return false;                               // false returneres (verdien finnes ikke)
     }
 
     @Override
